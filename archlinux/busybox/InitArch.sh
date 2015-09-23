@@ -1,8 +1,9 @@
-ISO_PATH="/sdcard/archlinux.iso"
+SD_CARD="/mnt/sdcard2"
+ISO_PATH="${SD_CARD}/archlinux.iso"
 FS_TYPE="ext3"
 MOUNT="busybox mount"
 CHROOT="busybox chroot"
-MOUNT_POINT="/sdcard/mnt/archlinux/"
+MOUNT_POINT="${SD_CARD}/mnt/archlinux/"
 
 if [ ! -f "${MOUNT_POINT}/bin/bash" ]
 then
@@ -21,4 +22,4 @@ then
 fi
 
 path="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin" 
-${CHROOT} "${MOUNT_POINT}" /bin/bash -c "export PATH='$path' TERM='$TERM' HOME='/root' USER='root'; exec /bin/bash"
+${CHROOT} "${MOUNT_POINT}" /bin/bash -c "exec env -i PATH='$path' TERM='$TERM' HOME='/root' USER='root' /bin/bash"
