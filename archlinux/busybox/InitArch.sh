@@ -1,4 +1,4 @@
-SD_CARD="/mnt/sdcard2"
+SD_CARD="/mnt/sdcard"
 ISO_PATH="${SD_CARD}/archlinux.iso"
 FS_TYPE="ext3"
 MOUNT="busybox mount"
